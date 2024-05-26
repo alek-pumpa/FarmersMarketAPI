@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Farmers Market Menu</title>
+    <script>
+        function buildUrl(path, params) {
+            const baseUrl = `${location.protocol}//${location.host}${location.pathname.split('/')[0]}`;
+            let url = baseUrl + path;
+            for (const key in params) {
+                url += `/${encodeURIComponent(key)}/${encodeURIComponent(params[key])}`;
+            }
+            return url;
+        }
+    </script>
+</head>
+<body>
+<h1>Farmers Market Menu</h1>
+<ul>
+    <li><a href="#" onclick="window.location.href = buildUrl('/menu/showProduceByVendor', {vendorId: vendor.id}); return false;">Show produce by vendor</a></li>
+    <li><a href="/menu/addProduce">Add produce</a></li>
+    <li><a href="/menu/addVendor">Add vendor</a></li>
+    <li><a href="#" onclick="window.location.href = buildUrl('/menu/removeProduce', {produceId: produce.id}); return false;">Remove produce</a></li>
+    <li><a href="#" onclick="window.location.href = buildUrl('/menu/removeVendor', {vendorId: vendor.id}); return false;">Remove vendor</a></li>
+    <li><a href="/menu/saveChanges">Save changes</a></li>
+</ul>
+</body>
+</html>
